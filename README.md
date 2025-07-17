@@ -5,10 +5,11 @@ A comprehensive benchmarking framework for AI-generated text detection models wi
 ## Project Structure
 
 ##Project Structure 
+```
 ai-textdetection-benchmark-optimization/
 ├── benchmarks/
 │   ├── __init__.py
-│   ├── core/                          # Core benchmarking logic
+│   ├── core/                          # Core benchmarking logi
 │   │   ├── __init__.py
 │   │   ├── evaluator.py              # Main BenchmarkRunner class
 │   │   ├── metrics_collector.py      # Metrics collection utilities
@@ -46,7 +47,7 @@ ai-textdetection-benchmark-optimization/
 │   └── workflows/
 │       └── benchmark.yml
 ├── requirements.txt
-└── README.md
+└── README.md ```
 
 ## Quick Start
 
