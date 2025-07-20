@@ -1,0 +1,106 @@
+
+# Base Configuration for AI Text Detection Benchmark
+
+# Project Settings
+project:
+  name: "AI Text Detection Benchmark"
+  version: "1.0.0"
+  description: "Comprehensive benchmarking of AI text detection models with optimization"
+
+# Dataset Configuration
+dataset:
+  name: "ai_text_detection"
+  train_split: 0.8
+  test_split: 0.2
+  random_seed: 42
+  max_samples: 10000  # Set to -1 for full dataset
+  
+# Model Configuration
+models:
+  bert_base:
+    model_name: "bert-base-uncased"
+    max_length: 512
+    batch_size: 16
+    learning_rate: 2e-5
+    
+  deberta_v3:
+    model_name: "microsoft/deberta-v3-base"
+    max_length: 512
+    batch_size: 16
+    learning_rate: 2e-5
+    
+  distilbert:
+    model_name: "distilbert-base-uncased"
+    max_length: 512
+    batch_size: 32
+    learning_rate: 2e-5
+    
+  tinybert:
+    model_name: "huawei-noah/TinyBERT_General_4L_312D"
+    max_length: 512
+    batch_size: 32
+    learning_rate: 2e-5
+
+# Training Configuration
+training:
+  num_epochs: 3
+  warmup_steps: 500
+  weight_decay: 0.01
+  save_steps: 500
+  eval_steps: 500
+  logging_steps: 100
+  
+# Evaluation Configuration
+evaluation:
+  metrics:
+    - accuracy
+    - precision
+    - recall
+    - f1_score
+    - inference_time
+    - memory_usage
+    - model_size
+  
+  benchmark_samples: 1000  # Number of samples for timing benchmarks
+  
+# Optimization Configuration
+optimization:
+  quantization:
+    enabled: true
+    method: "dynamic"  # dynamic, static, qat
+    precision: "int8"
+    
+  pruning:
+    enabled: true
+    method: "magnitude"  # magnitude, structured, gradual
+    sparsity: 0.3
+    
+  onnx:
+    enabled: true
+    opset_version: 11
+    optimize_for_mobile: false
+
+# Hardware Configuration
+hardware:
+  device: "auto"  # auto, cpu, cuda
+  mixed_precision: true
+  dataloader_workers: 4
+  
+# Logging Configuration
+logging:
+  level: "INFO"
+  save_logs: true
+  log_dir: "logs"
+  
+# Output Configuration
+output:
+  results_dir: "benchmarks/results"
+  save_models: true
+  save_plots: true
+  save_detailed_metrics: true
+  
+# Experimental Configuration
+experimental:
+  enable_profiling: false
+  save_intermediate_results: true
+  run_ablation_studies: false
